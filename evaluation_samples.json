@@ -1,0 +1,12 @@
+[
+  {
+    "name": "project_overview_response",
+    "message": "What does this project do?",
+    "expected_terms": ["project", "LLM", "vector", "Flask"]
+  },
+  {
+    "name": "architecture_response",
+    "message": "Explain the architecture of this AI system.",
+    "expected_terms": ["architecture", "RAG", "fallback", "deployment"]
+  }
+]

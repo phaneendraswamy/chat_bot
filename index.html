@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personal AI Assistant</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    <div class="chat-bar" id="chatBar">
+        <div class="chat-bar-content">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23111827'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EPA%3C/text%3E%3C/svg%3E" class="chat-bar-logo" alt="logo" />
+            <input type="text" id="chatBarInput" class="chat-bar-input" placeholder="Ask me about this project..." />
+            <button class="chat-bar-send" id="chatBarSend">&#10148;</button>
+        </div>
+        <div class="chat-bar-actions">
+            <button class="chat-bar-btn" data-query="What can this project do?">Features</button>
+            <button class="chat-bar-btn" data-query="How does this assistant work?">Assistant</button>
+            <button class="chat-bar-btn" data-query="Show me the project overview">Overview</button>
+        </div>
+    </div>
+
+    <div class="chat-popup" id="chatPopup" style="display: none;">
+        <div class="popup-header">
+            <div class="popup-header-left">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23111827'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EPA%3C/text%3E%3C/svg%3E" class="popup-logo" alt="logo" />
+                <div>
+                    <h4>Personal Project</h4>
+                    <p class="popup-status"><span class="status-dot"></span> Online</p>
+                </div>
+            </div>
+            <div class="popup-actions">
+                <button class="popup-btn" id="expandPopup" title="Expand">&#9974;</button>
+                <button class="popup-btn" id="closePopup" title="Minimize">&#10134;</button>
+            </div>
+        </div>
+        <div class="popup-content">
+            <h2>How can <span class="brand-name">this project</span> help?</h2>
+            <div class="popup-message">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23111827'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EPA%3C/text%3E%3C/svg%3E" class="msg-avatar" alt="bot" />
+                <p>Hi! I can explain the project, answer technical questions, and work with your own notes.</p>
+            </div>
+            <div class="popup-input-wrapper">
+                <input type="text" id="popupInput" class="popup-input" placeholder="Type your question..." />
+                <button class="popup-send-btn" id="popupSendBtn">&#10148;</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-widget" id="chatWidget" style="display: none;">
+        <div class="chat-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23111827'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EPA%3C/text%3E%3C/svg%3E" class="header-logo" alt="logo" />
+                    <div class="header-info">
+                        <h3 class="header-title">Personal AI Assistant</h3>
+                        <p class="header-status"><span class="status-dot"></span> Online</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn" id="clearHistoryBtn" title="Clear History">&#128465;</button>
+                    <button class="header-btn" id="minimizeBtn" title="Minimize">&#10134;</button>
+                    <button class="close-btn" id="closeBtn">&#10005;</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+                <div class="bot-avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23111827'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EPA%3C/text%3E%3C/svg%3E" alt="bot"/></div>
+                <div class="message-bubble assistant">
+                    <p>Welcome to your personal AI project. Pick a starter topic below or type a question.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
+        </div>
+
+        <div class="chat-input-container">
+            <div class="file-upload-area">
+                <input type="file" id="fileInput" hidden accept=".pdf,.doc,.docx,.txt" />
+                <label for="fileInput" class="file-upload-btn" title="Attach file">&#128194;</label>
+            </div>
+            <div class="input-wrapper">
+                <input id="messageInput" placeholder="Type your message..." autocomplete="off" />
+                <button class="send-btn" id="sendBtn">&#10148;</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
